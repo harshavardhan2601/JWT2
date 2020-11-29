@@ -1,0 +1,31 @@
+html
+    head
+        link(rel="icon", href="/images/register.png")
+        include header.pug
+        title register
+        
+    body
+        .container-fluid
+            .row.mt-5
+                .col-md-6.m-auto
+                    .card.card-body
+                        h1.text-center.mb-3
+                            |  Register
+                        form(action='/registerdata', method='POST',autocomplete='off')
+                            .form-group
+                                label(for='name') Name
+                                input#name.form-control(type='name', name='first', placeholder='Enter Name')
+                            .form-group
+                                label(for='email') Email
+                                input#email.form-control(type='email', name='email', placeholder='Enter Email')
+                            .form-group
+                                label(for='password') Password
+                                input#password.form-control(type='password', name='password', placeholder='Create Password')
+                            .form-group
+                                label(for='mobile') Mobile number
+                                input#password2.form-control(type='text', name='mobile', placeholder='mobile number')
+                            button.btn.btn-primary.btn-block(type='submit')
+                                | Register
+                        p.lead.mt-4
+                            | Have An Account? 
+                            a(href='/') Login

@@ -1,0 +1,26 @@
+html
+    head
+        link(rel="icon", href="/images/login.png")
+        include header.pug
+        title Login
+        
+        
+    body
+        .container-fluid
+            .row.mt-5
+                .col-md-4.m-auto
+                    .card.card-body
+                        h1.text-center.mb-3
+                            i.fas.fa-sign-in-alt
+                            |  Login
+                        form(action='/userslogin', method='POST', autocomplete= 'off')
+                            .form-group
+                                label(for='email') Email
+                                input#email.form-control(type='email', name='email', placeholder='Enter Email' required)
+                            .form-group
+                                label(for='password') Password
+                                input#password.form-control(type='password', name='password', placeholder='Enter Password')
+                            button.btn.btn-primary.btn-block(type='submit') Login
+                        p.lead.mt-4
+                            | No Account? 
+                            a(href='/register') Register

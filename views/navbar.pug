@@ -1,0 +1,50 @@
+nav.navbar.navbar-expand-md.bg-dark.navbar-dark
+	a.navbar-brand(href='#') Dashboard 
+	button.navbar-toggler(type='button', data-toggle='collapse', data-target='#collapsibleNavbar')
+		span.navbar-toggler-icon
+	#collapsibleNavbar.collapse.navbar-collapse
+		ul.navbar-nav
+			li.nav-item
+				a.nav-link(href='#') Employee
+			li.nav-item
+				a.nav-link(href='/profile') Profile
+			li.nav-item
+				a.nav-link(href='#') all accounts
+		ul.navbar-nav.ml-auto
+			//- li.nav-item.mt-2.mr-2
+			//- 	i.fa.fa-hourglass.fa-spin(aria-hidden='true',style='color:white')
+			li.nav-item.mt-2
+				b#div_timeout(style='color: orangered; min-width: 20px;display:none') 60
+			li.nav-item
+				a.nav-link(href='/logout') Logout
+	//- session timeout
+	script.
+		 var tbl, div;
+		 function resetTimer() {
+		 if ($('#div_timeout').length) {
+		 $('#div_timeout').html(timeout());
+		 }
+		 }
+		 function timeout() {
+		 return '60';
+		 }
+		 $(document).ready(function () {
+		 setInterval(function () {
+		 if ($('#div_timeout').length) {
+		 var tt = $('#div_timeout').html();
+		 if (tt === undefined) {
+		 tt = timeout();
+		 }
+		 var ct = parseInt(tt, 10) - 1;
+		 $('#div_timeout').html(ct.toString().padStart(3, '0'));
+		 console.log(ct);
+		 if (ct === 0) {
+		 var url = '/logout';
+		 $(location).attr('href', url);
+		 }
+		 } else {
+		 var url =  '/logout';
+		 $(location).attr('href', url);
+		 }
+		 }, 1000);
+		 });
